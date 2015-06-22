@@ -89,21 +89,14 @@ class PatternStrengthTester(object):
     """
     Defines the strength(password) method which returns the number of bits
     of entropy a password has, relative to the given wordlists and patterns.
-
-    Attributes:
-        wordlists ([[str]]): words from which passwords are taken, seperated
-                             into different categories.
     """
     def __init__(self, wordlists):
-        self.wordlists = sorted([(set([word.strip() for word in wordlist]), log(len(wordlist), 2)) for wordlist in wordlists], key=lambda (x,y): y)
-
-    def allWords(self):
-        result = set()
-
-        for wordset, _ in self.wordlists:
-            result |= wordset
-
-        return result
+        """
+        Args:
+            wordlists ([[str]]): words from which passwords are taken, seperated
+                                 into different categories.
+        """
+        self.wordlists = sorted([(set(wordlist), log(len(wordlist), 2)) for wordlist in wordlists], key=lambda (x,y): y)
 
     @staticmethod
     def capitalBonus(string):
@@ -133,7 +126,7 @@ class PatternStrengthTester(object):
         if string in dates:
             return 9
 
-        return 10 * len(string / 3)
+        return 10 * len(string) / 3
 
     @staticmethod
     def symbolBonus(string):
@@ -202,7 +195,7 @@ class PatternStrengthTester(object):
 
         return results[len(string) - 1]
 
-    def remainderBonus(string):
+    def remainderBonus(self, string):
         return 1 + self.strength(string)
 
     def strength(self, password):

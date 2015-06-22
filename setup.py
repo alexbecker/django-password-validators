@@ -11,5 +11,6 @@ setup(
     include_package_data = True,
     install_requires = [
         "pyparsing>=2.0",
+        "PyCrypto>=2.6.1",
     ],
 )

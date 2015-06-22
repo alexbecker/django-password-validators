@@ -1,3 +1,2 @@
 include password_validators/example_words.txt
 recursive-include password_validators/wordlists *
-recursive-include password_validators/templates *
