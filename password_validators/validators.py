@@ -111,13 +111,13 @@ class CommonPatternValidator(object):
     def get_help_text(self, force_regenerate=False):
         if self.example_words:
             if force_regenerate or not self.cached_example:
-                return _(("Your password must have at least {} bits of entropy. "
+                return _(("Your password must be complex (at least {} bits of entropy). "
                           "Try a phrase with at least {} different words. You could use "
                           "{}.").format(self.min_entropy, self.min_num_words, self.generate_example()))
             else:
-                return _(("Your password must have at least {} bits of entropy. "
+                return _(("Your password must be complex (at least {} bits of entropy). "
                           "Try a phrase with at least {} different words. For example "
                           "{}.").format(self.min_entropy, self.min_num_words, self.cached_example))
 
-        return _(("Passwords must contain at least {} bits of entropy. Try a phrase with "
+        return _(("Passwords must be complex (at least {} bits of entropy). Try a phrase with "
                   "at least {} different words.").format(self.min_entropy, self.min_num_words))

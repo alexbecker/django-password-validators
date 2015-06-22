@@ -164,7 +164,7 @@ class PatternStrengthTester(object):
             if string in wordset:
                 result = min(result, bonus)
             elif string != "" and string[-1] == "s" and string[:-1] in wordset:
-                result = min(result, bonus)
+                result = min(result, bonus + 1)
 
         if result == 10000:
             return None
